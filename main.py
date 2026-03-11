@@ -2,10 +2,10 @@ from fastapi import FastAPI
 from enum import Enum, auto
 from pydantic import BaseModel
 
-# Crear la aplicación FastAPI
+
 app = FastAPI(title="API Jugadores de Futbol")
 
-# Enum de posiciones usando auto()
+
 class PosicionFutbol(Enum):
     PORTERO = auto()
     DEFENSA = auto()
@@ -13,7 +13,7 @@ class PosicionFutbol(Enum):
     DELANTERO = auto()
     EXTREMO = auto()
 
-# Modelo de datos Jugador
+
 class Jugador(BaseModel):
     id: int
     name: str
@@ -22,7 +22,7 @@ class Jugador(BaseModel):
     posicion: PosicionFutbol
     equipo: str
 
-# Lista de jugadores de ejemplo
+
 jugadores = [
     Jugador(id=1, name="Messi", dorsal=10, altura=1.70, posicion=PosicionFutbol.DELANTERO, equipo="Inter Miami"),
     Jugador(id=2, name="Ronaldo", dorsal=7, altura=1.87, posicion=PosicionFutbol.DELANTERO, equipo="Al Nassr"),
@@ -30,17 +30,17 @@ jugadores = [
     Jugador(id=4, name="Courtois", dorsal=1, altura=2.00, posicion=PosicionFutbol.PORTERO, equipo="Real Madrid"),
 ]
 
-# Endpoint principal
+
 @app.get("/")
 def home():
     return {"mensaje": "Bienvenido a la API de jugadores de futbol"}
 
-# Mostrar todos los jugadores
+
 @app.get("/players")
 def get_players():
     return jugadores
 
-# Mostrar un jugador por id
+
 @app.get("/players/{player_id}")
 def show_one_player(player_id: int):
 
@@ -50,7 +50,7 @@ def show_one_player(player_id: int):
 
     return {"mensaje": "Jugador no encontrado"}
 
-# Comparar dos jugadores por altura
+
 @app.get("/compare/{id1}/{id2}")
 def compare_two_players(id1: int, id2: int):
 
@@ -75,7 +75,7 @@ def compare_two_players(id1: int, id2: int):
     else:
         return {"mensaje": "Los jugadores tienen la misma altura"}
 
-# Mostrar el equipo de un jugador
+
 @app.get("/team/{player_id}")
 def show_equipo(player_id: int):
 
@@ -85,7 +85,7 @@ def show_equipo(player_id: int):
 
     return {"mensaje": "Jugador no encontrado"}
 
-# Mostrar jugadores por equipo
+
 @app.get("/players/team/{team}")
 def players_by_team(team: str):
 
