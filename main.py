@@ -3,7 +3,7 @@ from enum import Enum, auto
 from pydantic import BaseModel
 
 
-app = FastAPI(title="API Jugadores de Futbol")
+app = FastAPI(title="api Jugadores de Futbol")
 
 
 class PosicionFutbol(Enum):
@@ -11,7 +11,7 @@ class PosicionFutbol(Enum):
     DEFENSA = auto()
     MEDIOCAMPISTA = auto()
     DELANTERO = auto()
-    EXTREMO = auto()
+    extremo = auto()
 
 
 class Jugador(BaseModel):
