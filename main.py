@@ -19,6 +19,12 @@ class Jugador(BaseModel):
     posicion: PosicionFutbol
     equipo: str
 
+# Lista de jugadores de prueba
+jugadores = [
+    Jugador(id=1, name="Messi", dorsal=10, altura=1.70, posicion="DELANTERO", equipo="Inter Miami"),
+    Jugador(id=2, name="Ronaldo", dorsal=7, altura=1.87, posicion="DELANTERO", equipo="Al Nassr"),
+]
+
 @app.get("/")
 def home():
     return {"mensaje": "API de jugadores funcionando"}
